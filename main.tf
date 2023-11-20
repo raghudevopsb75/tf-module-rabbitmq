@@ -76,7 +76,7 @@ resource "aws_iam_instance_profile" "instance_profile" {
 resource "aws_instance" "main" {
   ami                    = data.aws_ami.ami.id
   vpc_security_group_ids = [aws_security_group.main.id]
-  instance_type          = var.instance_type
+  instance_type          = var.rabbitmq_instance_type
   subnet_id              = var.subnets[0]
   iam_instance_profile   = aws_iam_instance_profile.instance_profile.name
 
