@@ -88,5 +88,10 @@ resource "aws_instance" "main" {
   tags = {
     Name = "${var.env}-${var.component}"
   }
+
+  root_block_device {
+    encrypted  = true
+    kms_key_id = var.kms_key_id
+  }
 }
 
