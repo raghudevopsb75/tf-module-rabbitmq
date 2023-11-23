@@ -95,3 +95,12 @@ resource "aws_instance" "main" {
   }
 }
 
+resource "aws_route53_record" "record" {
+  zone_id = var.zone_id
+  name    = "${var.component}-${var.env}"
+  type    = "A"
+  ttl     = 30
+  records = [aws_instance.main.private_ip]
+}
+
+
